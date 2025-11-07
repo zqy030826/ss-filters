@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from "@storybook/react";
 import { PredicateAddButton } from "../../components/admin-template/predicate-add-button";
-import { FiltersProvider } from "apgu-filters";
+import { FiltersProvider } from "@/apgu-filters";
 import { mockPredicates, mockUsers } from "../mock";
 import { AdminFilters } from ".";
 

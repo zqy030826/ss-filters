@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from "@storybook/react";
 import { PredicateComparatorSelect } from "../../components/admin-template/predicate-comparator-select";
-import { FiltersProvider } from "apgu-filters";
+import { FiltersProvider } from "@/apgu-filters";
 import { mockPredicates, mockUsers } from "../mock";
 
 const meta: Meta<typeof PredicateComparatorSelect> = {

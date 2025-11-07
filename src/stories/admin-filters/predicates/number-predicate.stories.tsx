@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from "@storybook/react";
-import { FiltersProvider } from "apgu-filters";
+import { FiltersProvider } from "@/apgu-filters";
 import { mockPredicates, mockUsers } from "../../mock";
 import NumberPredicateInput from "../../../components/admin-template/predicates-ui/number-predicate";
 import { PredicateRoot } from "../../../components/admin-template/predicate-root";
