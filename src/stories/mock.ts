@@ -1,43 +1,38 @@
-import {
-  StringPredicate,
-  DatePredicate,
-  NumberPredicate,
-  BooleanPredicate,
-  DateRangePredicate,
-  NumberRangePredicate,
-  DateRelativePredicate,
-  SelectPredicate,
-  MultiSelectPredicate
-} from "@/apgu-filters";
+import BooleanPredicate from "@/components/admin-template/predicates/boolean-predicate";
+import DatePredicate from "@/components/admin-template/predicates/date-predicate";
+import DateRangePredicate from "@/components/admin-template/predicates/date-range-predicate";
+import MultiSelectPredicate from "@/components/admin-template/predicates/multi-select-predicate";
+import NumberPredicate from "@/components/admin-template/predicates/number-predicate";
+import NumberRangePredicate from "@/components/admin-template/predicates/number-range-predicate";
+import SelectPredicate from "@/components/admin-template/predicates/select-predicate";
+import StringPredicate from "@/components/admin-template/predicates/string-predicate";
+import type { PredicateInstances } from "apgu-filters";
 
-type User = {
+export type User = {
   id: number;
   name: string;
   email: string;
   role: string;
   isActive: boolean;
   age: number;
-  createdAt: string;
-  updatedAt: string;
-  lastLogin: string;
+  createdAt: Date;
+  updatedAt: Date;
+  lastLogin: Date;
   orderCount: number;
-  accountExpiry: string;
+  accountExpiry: Date;
   department: string;
   manager: string;
   projects: string[];
 };
 
 export const mockPredicates = [
-  StringPredicate({
-    field: "name",
+  StringPredicate.meta({
     label: "Name"
-  }),
-  StringPredicate({
-    field: "email",
+  }).build("name"),
+  StringPredicate.meta({
     label: "Email"
-  }),
-  SelectPredicate({
-    field: "role",
+  }).build("email"),
+  SelectPredicate.meta({
     label: "Role",
     options: [
       { label: "Admin", value: "admin" },
@@ -45,37 +40,29 @@ export const mockPredicates = [
       { label: "Viewer", value: "viewer" },
       { label: "Manager", value: "manager" }
     ]
-  }),
-  NumberPredicate({
-    field: "age",
+  }).build("role"),
+  NumberPredicate.meta({
     label: "Age"
-  }),
-  BooleanPredicate({
-    field: "isActive",
+  }).build("age"),
+  BooleanPredicate.meta({
     label: "Active Status"
-  }),
-  DatePredicate({
-    field: "createdAt",
+  }).build("isActive"),
+  DatePredicate.meta({
     label: "Created At"
-  }),
-  DatePredicate({
-    field: "updatedAt",
+  }).build("createdAt"),
+  DatePredicate.meta({
     label: "Updated At"
-  }),
-  DateRangePredicate({
-    field: "lastLogin",
+  }).build("updatedAt"),
+  DateRangePredicate.meta({
     label: "Last Login Range"
-  }),
-  NumberRangePredicate({
-    field: "orderCount",
+  }).build("lastLogin"),
+  NumberRangePredicate.meta({
     label: "Order Count"
-  }),
-  DateRelativePredicate({
-    field: "accountExpiry",
+  }).build("orderCount"),
+  DatePredicate.meta({
     label: "Account Expiry"
-  }),
-  SelectPredicate({
-    field: "department",
+  }).build("accountExpiry"),
+  SelectPredicate.meta({
     label: "Department",
     options: [
       { label: "Engineering", value: "engineering" },
@@ -83,18 +70,16 @@ export const mockPredicates = [
       { label: "Sales", value: "sales" },
       { label: "Support", value: "support" }
     ]
-  }),
-  SelectPredicate({
-    field: "manager",
+  }).build("department"),
+  SelectPredicate.meta({
     label: "Manager",
     options: [
       { label: "Sarah Johnson", value: "manager1" },
       { label: "Michael Chen", value: "manager2" },
       { label: "Emily Rodriguez", value: "manager3" }
     ]
-  }),
-  MultiSelectPredicate({
-    field: "projects",
+  }).build("manager"),
+  MultiSelectPredicate.meta({
     label: "Projects",
     options: [
       { label: "Project Alpha", value: "projectA" },
@@ -102,8 +87,8 @@ export const mockPredicates = [
       { label: "Project Gamma", value: "projectC" },
       { label: "Project Delta", value: "projectD" }
     ]
-  })
-];
+  }).build("projects")
+] satisfies PredicateInstances<User>;
 
 // Mock Data (10 realistic user records)
 export const mockUsers: User[] = [
@@ -113,12 +98,12 @@ export const mockUsers: User[] = [
     email: "alice.cooper@company.com",
     role: "admin",
     isActive: true,
-    createdAt: "2023-01-15T10:30:00Z",
-    updatedAt: "2025-10-28T14:20:00Z",
-    lastLogin: "2025-11-04T09:15:00Z",
+    createdAt: new Date("2023-01-15T10:30:00Z"),
+    updatedAt: new Date("2025-10-28T14:20:00Z"),
+    lastLogin: new Date("2025-11-04T09:15:00Z"),
     orderCount: 156,
     age: 29,
-    accountExpiry: "2026-01-15T00:00:00Z",
+    accountExpiry: new Date("2026-01-15T00:00:00Z"),
     department: "engineering",
     manager: "manager2",
     projects: ["projectA", "projectB"]
@@ -130,11 +115,11 @@ export const mockUsers: User[] = [
     role: "editor",
     isActive: true,
     age: 34,
-    createdAt: "2023-06-22T08:45:00Z",
-    updatedAt: "2025-11-02T16:30:00Z",
-    lastLogin: "2025-11-03T11:20:00Z",
+    createdAt: new Date("2023-06-22T08:45:00Z"),
+    updatedAt: new Date("2025-11-02T16:30:00Z"),
+    lastLogin: new Date("2025-11-03T11:20:00Z"),
     orderCount: 89,
-    accountExpiry: "2026-06-22T00:00:00Z",
+    accountExpiry: new Date("2026-06-22T00:00:00Z"),
     department: "marketing",
     manager: "manager1",
     projects: ["projectB", "projectC"]
@@ -146,11 +131,11 @@ export const mockUsers: User[] = [
     role: "viewer",
     age: 28,
     isActive: false,
-    createdAt: "2024-02-10T13:15:00Z",
-    updatedAt: "2025-08-15T10:00:00Z",
-    lastLogin: "2025-09-20T15:40:00Z",
+    createdAt: new Date("2024-02-10T13:15:00Z"),
+    updatedAt: new Date("2025-08-15T10:00:00Z"),
+    lastLogin: new Date("2025-09-20T15:40:00Z"),
     orderCount: 23,
-    accountExpiry: "2025-12-10T00:00:00Z",
+    accountExpiry: new Date("2025-12-10T00:00:00Z"),
     department: "sales",
     manager: "manager3",
     projects: ["projectC"]
@@ -162,11 +147,11 @@ export const mockUsers: User[] = [
     role: "manager",
     age: 41,
     isActive: true,
-    createdAt: "2022-11-05T09:00:00Z",
-    updatedAt: "2025-11-01T08:45:00Z",
-    lastLogin: "2025-11-05T07:30:00Z",
+    createdAt: new Date("2022-11-05T09:00:00Z"),
+    updatedAt: new Date("2025-11-01T08:45:00Z"),
+    lastLogin: new Date("2025-11-05T07:30:00Z"),
     orderCount: 342,
-    accountExpiry: "2027-11-05T00:00:00Z",
+    accountExpiry: new Date("2027-11-05T00:00:00Z"),
     department: "engineering",
     manager: "manager2",
     projects: ["projectA", "projectD"]
@@ -177,12 +162,12 @@ export const mockUsers: User[] = [
     email: "emma.thompson@company.com",
     role: "editor",
     isActive: true,
-    createdAt: "2024-05-18T11:20:00Z",
-    updatedAt: "2025-10-30T13:10:00Z",
-    lastLogin: "2025-11-04T16:25:00Z",
+    createdAt: new Date("2024-05-18T11:20:00Z"),
+    updatedAt: new Date("2025-10-30T13:10:00Z"),
+    lastLogin: new Date("2025-11-04T16:25:00Z"),
     age: 31,
     orderCount: 67,
-    accountExpiry: "2026-05-18T00:00:00Z",
+    accountExpiry: new Date("2026-05-18T00:00:00Z"),
     department: "support",
     manager: "manager1",
     projects: ["projectB"]
@@ -194,11 +179,11 @@ export const mockUsers: User[] = [
     role: "viewer",
     isActive: true,
     age: 26,
-    createdAt: "2024-08-30T14:40:00Z",
-    updatedAt: "2025-11-03T09:55:00Z",
-    lastLogin: "2025-11-04T12:10:00Z",
+    createdAt: new Date("2024-08-30T14:40:00Z"),
+    updatedAt: new Date("2025-11-03T09:55:00Z"),
+    lastLogin: new Date("2025-11-04T12:10:00Z"),
     orderCount: 12,
-    accountExpiry: "2026-08-30T00:00:00Z",
+    accountExpiry: new Date("2026-08-30T00:00:00Z"),
     department: "marketing",
     manager: "manager1",
     projects: ["projectC"]
@@ -210,11 +195,11 @@ export const mockUsers: User[] = [
     role: "admin",
     isActive: true,
     age: 38,
-    createdAt: "2023-03-12T10:00:00Z",
-    updatedAt: "2025-11-04T11:30:00Z",
-    lastLogin: "2025-11-05T08:00:00Z",
+    createdAt: new Date("2023-03-12T10:00:00Z"),
+    updatedAt: new Date("2025-11-04T11:30:00Z"),
+    lastLogin: new Date("2025-11-05T08:00:00Z"),
     orderCount: 234,
-    accountExpiry: "2026-03-12T00:00:00Z",
+    accountExpiry: new Date("2026-03-12T00:00:00Z"),
     department: "engineering",
     manager: "manager2",
     projects: ["projectA", "projectB", "projectD"]
@@ -226,11 +211,11 @@ export const mockUsers: User[] = [
     role: "manager",
     isActive: false,
     age: 45,
-    createdAt: "2023-09-20T15:30:00Z",
-    updatedAt: "2025-07-10T14:15:00Z",
-    lastLogin: "2025-07-10T17:45:00Z",
+    createdAt: new Date("2023-09-20T15:30:00Z"),
+    updatedAt: new Date("2025-07-10T14:15:00Z"),
+    lastLogin: new Date("2025-07-10T17:45:00Z"),
     orderCount: 178,
-    accountExpiry: "2025-11-20T00:00:00Z",
+    accountExpiry: new Date("2025-11-20T00:00:00Z"),
     department: "sales",
     manager: "manager3",
     projects: ["projectC", "projectD"]
@@ -242,11 +227,11 @@ export const mockUsers: User[] = [
     role: "editor",
     isActive: true,
     age: 30,
-    createdAt: "2024-01-08T12:45:00Z",
-    updatedAt: "2025-11-02T10:20:00Z",
-    lastLogin: "2025-11-02T14:30:00Z",
+    createdAt: new Date("2024-01-08T12:45:00Z"),
+    updatedAt: new Date("2025-11-02T10:20:00Z"),
+    lastLogin: new Date("2025-11-02T14:30:00Z"),
     orderCount: 95,
-    accountExpiry: "2026-01-08T00:00:00Z",
+    accountExpiry: new Date("2026-01-08T00:00:00Z"),
     department: "support",
     manager: "manager1",
     projects: ["projectA", "projectC"]
@@ -258,11 +243,11 @@ export const mockUsers: User[] = [
     role: "viewer",
     age: 27,
     isActive: true,
-    createdAt: "2024-07-14T09:30:00Z",
-    updatedAt: "2025-10-25T15:40:00Z",
-    lastLogin: "2025-10-28T10:15:00Z",
+    createdAt: new Date("2024-07-14T09:30:00Z"),
+    updatedAt: new Date("2025-10-25T15:40:00Z"),
+    lastLogin: new Date("2025-10-28T10:15:00Z"),
     orderCount: 45,
-    accountExpiry: "2026-07-14T00:00:00Z",
+    accountExpiry: new Date("2026-07-14T00:00:00Z"),
     department: "marketing",
     manager: "manager3",
     projects: ["projectB", "projectD"]

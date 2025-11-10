@@ -1,21 +1,24 @@
 import { type Meta, type StoryObj } from "@storybook/react";
-import { FiltersProvider } from "@/apgu-filters";
+import { FiltersProvider, FilterRule } from "apgu-filters";
 import { mockPredicates, mockUsers } from "../../mock";
-import BooleanPredicateInput from "../../../components/admin-template/predicates-ui/boolean-predicate";
-import { PredicateRoot } from "../../../components/admin-template/predicate-root";
+import { AdminFilters } from "../../../components/admin-template/filters";
 
-const meta: Meta<typeof BooleanPredicateInput> = {
+const meta: Meta<typeof AdminFilters> = {
   title: "Admin Template/Predicates/Boolean Predicate",
-  component: BooleanPredicateInput,
+  component: AdminFilters,
   parameters: {
     layout: "centered"
   },
   decorators: [
     (Story) => (
-      <FiltersProvider predicates={mockPredicates} values={mockUsers}>
-        <PredicateRoot>
-          <Story />
-        </PredicateRoot>
+      <FiltersProvider
+        predicates={mockPredicates}
+        values={mockUsers}
+        defaultFilterExpression={[
+          new FilterRule("isActive", "boolean-equals", true)
+        ]}
+      >
+        <Story />
       </FiltersProvider>
     )
   ]
@@ -23,18 +26,6 @@ const meta: Meta<typeof BooleanPredicateInput> = {
 
 export default meta;
 
-type Story = StoryObj<typeof BooleanPredicateInput>;
+type Story = StoryObj<typeof AdminFilters>;
 
-export const True: Story = {
-  args: {
-    filterValue: true,
-    onFilterValueChange: (value) => console.log("Value changed:", value)
-  }
-};
-
-export const False: Story = {
-  args: {
-    filterValue: false,
-    onFilterValueChange: (value) => console.log("Value changed:", value)
-  }
-};
+export const Default: Story = {};

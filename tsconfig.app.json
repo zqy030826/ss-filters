@@ -25,7 +25,8 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "apgu-filters": ["./src/external/apgu-filters/src/index.ts"]
     }
   },
   "include": ["src"]

@@ -1,21 +1,27 @@
 import { type Meta, type StoryObj } from "@storybook/react";
-import { FiltersProvider } from "@/apgu-filters";
+import { FiltersProvider, FilterRule } from "apgu-filters";
 import { mockPredicates, mockUsers } from "../../mock";
-import DateRangePredicateInput from "../../../components/admin-template/predicates-ui/date-range-predicate";
-import { PredicateRoot } from "../../../components/admin-template/predicate-root";
+import { AdminFilters } from "../../../components/admin-template/filters";
 
-const meta: Meta<typeof DateRangePredicateInput> = {
+const meta: Meta<typeof AdminFilters> = {
   title: "Admin Template/Predicates/Date Range Predicate",
-  component: DateRangePredicateInput,
+  component: AdminFilters,
   parameters: {
     layout: "centered"
   },
   decorators: [
     (Story) => (
-      <FiltersProvider predicates={mockPredicates} values={mockUsers}>
-        <PredicateRoot>
-          <Story />
-        </PredicateRoot>
+      <FiltersProvider
+        predicates={mockPredicates}
+        values={mockUsers}
+        defaultFilterExpression={[
+          new FilterRule("lastLogin", "date-range-in-range-inclusive", {
+            min: new Date(),
+            max: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+          })
+        ]}
+      >
+        <Story />
       </FiltersProvider>
     )
   ]
@@ -23,24 +29,6 @@ const meta: Meta<typeof DateRangePredicateInput> = {
 
 export default meta;
 
-type Story = StoryObj<typeof DateRangePredicateInput>;
+type Story = StoryObj<typeof AdminFilters>;
 
-export const Default: Story = {
-  args: {
-    filterValue: {
-      min: new Date(),
-      max: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-    },
-    onFilterValueChange: (value) => console.log("Value changed:", value)
-  }
-};
-
-export const WithCustomRange: Story = {
-  args: {
-    filterValue: {
-      min: new Date("2025-01-01"),
-      max: new Date("2025-12-31")
-    },
-    onFilterValueChange: (value) => console.log("Value changed:", value)
-  }
-};
+export const Default: Story = {};

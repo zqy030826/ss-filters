@@ -1,21 +1,24 @@
 import { type Meta, type StoryObj } from "@storybook/react";
-import { FiltersProvider } from "@/apgu-filters";
+import { FiltersProvider, FilterRule } from "apgu-filters";
 import { mockPredicates, mockUsers } from "../../mock";
-import StringPredicateInput from "../../../components/admin-template/predicates-ui/string-predicate";
-import { PredicateRoot } from "../../../components/admin-template/predicate-root";
+import { AdminFilters } from "../../../components/admin-template/filters";
 
-const meta: Meta<typeof StringPredicateInput> = {
+const meta: Meta<typeof AdminFilters> = {
   title: "Admin Template/Predicates/String Predicate",
-  component: StringPredicateInput,
+  component: AdminFilters,
   parameters: {
     layout: "centered"
   },
   decorators: [
     (Story) => (
-      <FiltersProvider predicates={mockPredicates} values={mockUsers}>
-        <PredicateRoot>
-          <Story />
-        </PredicateRoot>
+      <FiltersProvider
+        predicates={mockPredicates}
+        values={mockUsers}
+        defaultFilterExpression={[
+          new FilterRule("name", "string-contains", "")
+        ]}
+      >
+        <Story />
       </FiltersProvider>
     )
   ]
@@ -23,18 +26,6 @@ const meta: Meta<typeof StringPredicateInput> = {
 
 export default meta;
 
-type Story = StoryObj<typeof StringPredicateInput>;
+type Story = StoryObj<typeof AdminFilters>;
 
-export const Default: Story = {
-  args: {
-    filterValue: "",
-    onFilterValueChange: (value) => console.log("Value changed:", value)
-  }
-};
-
-export const WithValue: Story = {
-  args: {
-    filterValue: "John Doe",
-    onFilterValueChange: (value) => console.log("Value changed:", value)
-  }
-};
+export const Default: Story = {};

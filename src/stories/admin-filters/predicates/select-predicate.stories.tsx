@@ -1,21 +1,24 @@
 import { type Meta, type StoryObj } from "@storybook/react";
-import { FiltersProvider } from "@/apgu-filters";
+import { FiltersProvider, FilterRule } from "apgu-filters";
 import { mockPredicates, mockUsers } from "../../mock";
-import SelectPredicateInput from "../../../components/admin-template/predicates-ui/select-predicate";
-import { PredicateRoot } from "../../../components/admin-template/predicate-root";
+import { AdminFilters } from "../../../components/admin-template/filters";
 
-const meta: Meta<typeof SelectPredicateInput> = {
+const meta: Meta<typeof AdminFilters> = {
   title: "Admin Template/Predicates/Select Predicate",
-  component: SelectPredicateInput,
+  component: AdminFilters,
   parameters: {
     layout: "centered"
   },
   decorators: [
     (Story) => (
-      <FiltersProvider predicates={mockPredicates} values={mockUsers}>
-        <PredicateRoot>
-          <Story />
-        </PredicateRoot>
+      <FiltersProvider
+        predicates={mockPredicates}
+        values={mockUsers}
+        defaultFilterExpression={[
+          new FilterRule("role", "select-includes", [])
+        ]}
+      >
+        <Story />
       </FiltersProvider>
     )
   ]
@@ -23,27 +26,6 @@ const meta: Meta<typeof SelectPredicateInput> = {
 
 export default meta;
 
-type Story = StoryObj<typeof SelectPredicateInput>;
+type Story = StoryObj<typeof AdminFilters>;
 
-const sampleOptions = [
-  { label: "Admin", value: "admin" },
-  { label: "Editor", value: "editor" },
-  { label: "Viewer", value: "viewer" },
-  { label: "Manager", value: "manager" }
-];
-
-export const Default: Story = {
-  args: {
-    filterValue: [],
-    onFilterValueChange: (value) => console.log("Value changed:", value),
-    options: sampleOptions
-  }
-};
-
-export const WithSelectedValue: Story = {
-  args: {
-    filterValue: ["admin"],
-    onFilterValueChange: (value) => console.log("Value changed:", value),
-    options: sampleOptions
-  }
-};
+export const Default: Story = {};
