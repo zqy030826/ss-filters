@@ -1,11 +1,11 @@
-import BooleanPredicate from "@/components/admin-template/predicates/boolean-predicate";
-import DatePredicate from "@/components/admin-template/predicates/date-predicate";
-import DateRangePredicate from "@/components/admin-template/predicates/date-range-predicate";
-import MultiSelectPredicate from "@/components/admin-template/predicates/multi-select-predicate";
-import NumberPredicate from "@/components/admin-template/predicates/number-predicate";
-import NumberRangePredicate from "@/components/admin-template/predicates/number-range-predicate";
-import SelectPredicate from "@/components/admin-template/predicates/select-predicate";
-import StringPredicate from "@/components/admin-template/predicates/string-predicate";
+import BooleanPredicate from "@/components/example-template/predicates/boolean-predicate";
+import DatePredicate from "@/components/example-template/predicates/date-predicate";
+import DateRangePredicate from "@/components/example-template/predicates/date-range-predicate";
+import MultiSelectPredicate from "@/components/example-template/predicates/multi-select-predicate";
+import NumberPredicate from "@/components/example-template/predicates/number-predicate";
+import NumberRangePredicate from "@/components/example-template/predicates/number-range-predicate";
+import SelectPredicate from "@/components/example-template/predicates/select-predicate";
+import StringPredicate from "@/components/example-template/predicates/string-predicate";
 import type { PredicateInstances } from "apgu-filters";
 
 export type User = {

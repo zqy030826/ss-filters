@@ -79,5 +79,17 @@ export const PredicateDeleteButton = ({
   const { removeRuleByIndex } = useFiltersContext();
 
   // TODO: Implement the delete button UI here
+
+  // YOUR PREVIOUS IMPLEMENTATION BELOW
+  /*
+  <Button
+      size="icon-sm"
+      variant="outline"
+      onClick={() => removeRule({ index })}
+      className="rounded-full"
+    >
+      <X />
+    </Button>
+  */
   return null;
 };

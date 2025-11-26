@@ -40,5 +40,19 @@
 export const FiltersRoot = ({ children }: { children: React.ReactNode }) => {
   // TODO: Implement the container layout here
   // Suggestion: Use flex-col with gap for vertical stacking
+
+  // YOUR PREVIOUS IMPLEMENTATION BELOW
+  /*
+  <div
+        className={cn(
+          // Base layout
+          "flex w-full flex-col gap-3 rounded-xl border bg-background/60 p-4 shadow-sm",
+          // Make sure content is left‑aligned by default (storybook will center the card itself)
+          "items-stretch justify-between",
+          className
+        )}
+        {...props}
+      />
+  */
   return <div>{children}</div>;
 };

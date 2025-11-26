@@ -56,5 +56,11 @@ interface PredicateRootProps {
 export const PredicateRoot = ({ children }: PredicateRootProps) => {
   // TODO: Implement the container UI here
   // Suggestion: Use ButtonGroup or a flex container with styling
+
+  // YOUR PREVIOUS IMPLEMENTATION BELOW
+  /*
+   <ButtonGroup>{children}</ButtonGroup>
+  */
+
   return <div>{children}</div>;
 };

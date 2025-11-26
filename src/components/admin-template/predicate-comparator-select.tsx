@@ -97,5 +97,40 @@ export const PredicateComparatorSelect = ({
   if (!predicate) return null;
 
   // TODO: Implement the comparator dropdown UI here
+
+  // YOUR PREVIOUS IMPLEMENTATION BELOW
+  /*
+  <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button size="sm" variant="outline">
+          <span>
+            {options.find(
+              (opt: ComparatorInstance) => opt.def.id === comparator
+            )?.label || "Select an option"}
+          </span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-fit">
+        {options.map((option: ComparatorInstance) => {
+          const isSelected = comparator === option.def.id;
+
+          return (
+            <DropdownMenuItem
+              key={option.def.id}
+              className={
+                isSelected ? "bg-secondary text-secondary-foreground" : ""
+              }
+              onClick={() =>
+                setRuleComparator({ index, comparator: option.def.id })
+              }
+            >
+              <div className="w-4">{isSelected && <Check />}</div>
+              {option.payload.label}
+            </DropdownMenuItem>
+          );
+        })}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  */
   return null;
 };

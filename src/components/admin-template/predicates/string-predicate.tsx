@@ -43,6 +43,16 @@ export const StringPredicate = Predicate.create<string, string>()
      * Story to test the component:
      * src/stories/admin-filters/predicates/string-predicate.stories.tsx
      */
+
+    // YOUR PREVIOUS IMPLEMENTATION BELOW
+    /*
+     <Input
+      className="h-8 w-24"
+      value={filterValue}
+      onChange={(e) => onFilterValueChange(e.target.value)}
+      placeholder="Filter..."
+    />
+    */
     return null;
   });
 

@@ -27,6 +27,22 @@ const BooleanPredicate = Predicate.create<boolean, boolean>()
      * Story to test the component: 
      * src/stories/admin-template/predicates/boolean-predicate.stories.tsx
      */
+
+    // YOUR PREVIOUS IMPLEMENTATION BELOW
+    /*
+     <Select
+      value={filterValue.toString()}
+      onValueChange={(val) => onFilterValueChange(val === "true")}
+    >
+      <SelectTrigger size="sm">
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="true">True</SelectItem>
+        <SelectItem value="false">False</SelectItem>
+      </SelectContent>
+    </Select>
+    */
     return null;
   });
 

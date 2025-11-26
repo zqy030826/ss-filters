@@ -57,6 +57,28 @@ export const DatePredicate = Predicate.create<
      * Story to test the component:
      * src/stories/admin-filters/predicates/date-predicate.stories.tsx
      */
+
+    // YOUR PREVIOUS IMPLEMENTATION BELOW
+    /*
+     <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button variant="outline" id="date" size="sm">
+          {filterValue ? filterValue.toLocaleDateString() : "Select date"}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto overflow-hidden p-0" align="start">
+        <Calendar
+          mode="single"
+          selected={filterValue}
+          captionLayout="dropdown"
+          onSelect={(date) => {
+            onFilterValueChange(date || new Date());
+            setOpen(false);
+          }}
+        />
+      </PopoverContent>
+    </Popover>
+    */
     return null;
   });
 

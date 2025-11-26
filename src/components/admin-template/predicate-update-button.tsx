@@ -75,5 +75,37 @@ export const PredicateUpdateButton = ({
   if (!selectedPredicate) return null;
 
   // TODO: Implement the dropdown UI here
+
+  // YOUR PREVIOUS IMPLEMENTATION BELOW
+
+  /*
+   <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="outline"
+          size="sm"
+          aria-label="Select field"
+          className="rounded-full"
+        >
+          <span>
+            {predicates.find((opt) => opt.field === value)?.payload.label ||
+              "Select an option"}
+          </span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width)">
+        {predicates.map((predicate) => {
+          return (
+            <DropdownMenuItem
+              key={predicate.field}
+              onClick={() => setRuleTarget({ index, field: predicate.field })}
+            >
+              {predicate.payload.label}
+            </DropdownMenuItem>
+          );
+        })}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  */
   return null;
 };

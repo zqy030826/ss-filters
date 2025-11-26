@@ -49,6 +49,34 @@ export const SelectPredicate = Predicate.create<
       }
     };
 
+    // YOUR PREVIOUS IMPLEMENTATION BELOW
+    /*
+    <Select
+      value={selectedValues[0] || ""}
+      onValueChange={(value) => {
+        if (selectedValues.includes(value)) {
+          onFilterValueChange(selectedValues.filter((v) => v !== value));
+        } else {
+          onFilterValueChange([value]);
+        }
+      }}
+    >
+      <SelectTrigger size="sm" className="w-32">
+        <SelectValue
+          placeholder="Select..."
+        >
+          {selectedLabels.length > 0 ? selectedLabels[0] : "Select..."}
+        </SelectValue>
+      </SelectTrigger>
+      <SelectContent>
+        {options.map((option) => (
+          <SelectItem key={option.value} value={option.value}>
+            {option.label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+    */
     return null;
   });
 

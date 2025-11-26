@@ -41,6 +41,17 @@ export const NumberPredicate = Predicate.create<number, number>()
      * Story to test the component:
      * src/stories/admin-filters/predicates/number-predicate.stories.tsx
      */
+
+    // YOUR PREVIOUS IMPLEMENTATION BELOW
+    /*
+    <Input
+      className="h-8 w-24"
+      type="number"
+      value={filterValue}
+      onChange={(e) => onFilterValueChange(Number(e.target.value))}
+      placeholder="0"
+    />
+    */
     return null;
   });
 

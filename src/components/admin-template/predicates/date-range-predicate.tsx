@@ -64,6 +64,54 @@ const DateRangePredicate = Predicate.create<
       onFilterValueChange({ min, max: newMax });
     };
 
+    // YOUR PREVIOUS IMPLEMENTATION BELOW
+    /*
+     <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button variant="outline" size="sm" className="justify-start">
+          {filterValue.min && filterValue.max
+            ? `${filterValue.min.toLocaleDateString()} - ${filterValue.max.toLocaleDateString()}`
+            : "Select date range"}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto p-0" align="start">
+        <div className="flex flex-col gap-2 p-3">
+          <div>
+            <label className="text-xs text-muted-foreground mb-1 block">
+              Start Date
+            </label>
+            <Calendar
+              mode="single"
+              selected={filterValue.min}
+              captionLayout="dropdown"
+              onSelect={(date) => {
+                if (date) {
+                  onFilterValueChange({ ...filterValue, min: date });
+                }
+              }}
+            />
+          </div>
+          <div>
+            <label className="text-xs text-muted-foreground mb-1 block">
+              End Date
+            </label>
+            <Calendar
+              mode="single"
+              selected={filterValue.max}
+              captionLayout="dropdown"
+              onSelect={(date) => {
+                if (date) {
+                  onFilterValueChange({ ...filterValue, max: date });
+                  setOpen(false);
+                }
+              }}
+            />
+          </div>
+        </div>
+      </PopoverContent>
+    </Popover>
+    */
+
     return null;
   });
 

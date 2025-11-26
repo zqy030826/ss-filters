@@ -1,12 +1,6 @@
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from "@/components/ui/select";
 import { Predicate } from "apgu-filters";
 import { Equals, NotEquals } from "../comparators";
+import { Switch } from "@/components/ui/switch";
 
 const BooleanPredicate = Predicate.create<boolean, boolean>()
   .id("boolean")
@@ -15,18 +9,14 @@ const BooleanPredicate = Predicate.create<boolean, boolean>()
   .defaultValue(true)
   .render(({ filterValue, onFilterValueChange }) => {
     return (
-      <Select
-        value={filterValue.toString()}
-        onValueChange={(val) => onFilterValueChange(val === "true")}
-      >
-        <SelectTrigger size="sm">
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="true">True</SelectItem>
-          <SelectItem value="false">False</SelectItem>
-        </SelectContent>
-      </Select>
+      <div className="size-8 border flex items-center justify-center px-6">
+        <Switch
+          checked={filterValue}
+          onCheckedChange={(checked) =>
+            onFilterValueChange(!!checked)
+          }
+        />
+      </div>
     );
   });
 

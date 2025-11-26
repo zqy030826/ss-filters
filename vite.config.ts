@@ -15,7 +15,8 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src")
+      "@": path.resolve(__dirname, "./src"),
+      "apgu-filters": path.resolve(__dirname, "./src/external/apgu-filters/src/index.ts")
     }
   },
   test: {

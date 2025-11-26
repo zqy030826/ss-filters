@@ -22,7 +22,7 @@ export const ExampleFilters = () => {
               filterValue: filterRule.value,
               onFilterValueChange: (value) => {
                 setRuleValue(filterRule, value);
-              }
+              },
             })}
             <PredicateDeleteButton index={predicateIndex} />
           </PredicateRoot>
