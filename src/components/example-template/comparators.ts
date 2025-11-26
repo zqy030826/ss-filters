@@ -5,10 +5,16 @@ import {
   type StringLike
 } from "apgu-filters";
 
+decalre module "nazwa paczki" {
+  export interface DefaultComapratorMeta{
+    shortcut?:string
+  }
+}
+
 export const WeakEquals = Comparator.create<Comparable, Comparable>()
   .id("weak-equals")
   .evaluate(({ filter, value }) => value == filter)
-  .meta({ label: "Equals (loose)" });
+  .meta({ label: "Equals (loose)",shortcut:"" });
 
 export const Equals = Comparator.create<Comparable, Comparable>()
   .id("equals")
