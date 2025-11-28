@@ -21,7 +21,7 @@ const meta: Meta<typeof ExampleFilters> = {
 
 export default meta;
 
-//type Story = StoryObj<typeof ExampleFilters>;
+type Story = StoryObj<typeof ExampleFilters>;
 
 // Component that displays filtered results in a table
 const FilteredUsersTable = () => {
