@@ -1,6 +1,3 @@
-import { type Meta, type StoryObj } from "@storybook/react";
-import { FiltersProvider, FilterRule, useFiltersContext } from "apgu-filters";
-import { mockPredicates, mockUsers, type User } from "../mock";
 import { ExampleFilters } from "@/components/example-template/filters";
 import {
   Table,
@@ -10,6 +7,9 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { type Meta } from "@storybook/react";
+import { FilterRule, FiltersProvider, useFiltersContext } from "apgu-filters";
+import { mockPredicates, mockUsers, type User } from "../mock";
 
 const meta: Meta<typeof ExampleFilters> = {
   title: "Example Template/Example Filters",
@@ -21,7 +21,7 @@ const meta: Meta<typeof ExampleFilters> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ExampleFilters>;
+//type Story = StoryObj<typeof ExampleFilters>;
 
 // Component that displays filtered results in a table
 const FilteredUsersTable = () => {
